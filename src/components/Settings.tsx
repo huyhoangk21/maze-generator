@@ -11,6 +11,7 @@ import {
 import { useSettings } from '../hooks/useSettings';
 import { useDFS } from '../generators/useDFS';
 import { usePrim } from '../generators/usePrim';
+import { useAldousBroder } from '../generators/useAldousBroder';
 
 const Settings = () => {
   const { size, generator, delay, appState, setNew, onChangeHandler } =
@@ -18,6 +19,7 @@ const Settings = () => {
 
   const { dfs } = useDFS();
   const { prim } = usePrim();
+  const { aldousBroder } = useAldousBroder();
 
   const generatorOptions = [
     { key: DFS, value: 'Randomized DFS' },
@@ -93,7 +95,7 @@ const Settings = () => {
           disabled={appState !== NEW}
           onClick={async () => {
             setNew(RUNNING);
-            await prim();
+            await aldousBroder();
             setNew(STOP);
           }}
         >

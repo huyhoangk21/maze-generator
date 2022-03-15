@@ -28,7 +28,7 @@ interface ICell {
 interface IMazeContext {
   cells: ICell[];
   setCell: (key: number, state: number) => void;
-  isCell: (key: number, state: number) => void;
+  isCell: (key: number, state: number) => boolean;
   removeWallBetween: (key1: number, key2: number) => void;
   pToKey: ([x, y]: Position) => number;
   kToPos: (key: number) => Position;
