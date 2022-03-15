@@ -1,6 +1,7 @@
-import React from 'react';
 import { useSettings } from '../hooks/useSettings';
 import { useWidth } from '../hooks/useWidth';
+import { UNVISITED } from '../utils/constants';
+import { Cell } from './Cell';
 
 const Maze = () => {
   const { width } = useWidth();
@@ -8,7 +9,7 @@ const Maze = () => {
 
   return (
     <div
-      className='border border-black grid mt-5 md:mt-10'
+      className='border border-black grid'
       style={{
         width,
         height: width,
@@ -16,7 +17,7 @@ const Maze = () => {
       }}
     >
       {Array.from(Array(size * size).keys()).map(key => (
-        <div key={key} className='border border-black' />
+        <Cell key={key} state={UNVISITED} walls={[true, true, true, true]} />
       ))}
     </div>
   );

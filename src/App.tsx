@@ -1,4 +1,5 @@
 import React from 'react';
+import Legend from './components/Legend';
 import Maze from './components/Maze';
 import Settings from './components/Settings';
 import { SettingProvider } from './hooks/useSettings';
@@ -11,6 +12,7 @@ const App = () => {
           Maze Generator
         </div>
         <Settings />
+        <Legend />
         <Maze />
       </div>
     </SettingProvider>

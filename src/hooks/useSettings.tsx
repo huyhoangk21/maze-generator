@@ -5,7 +5,7 @@ import {
   useContext,
   useState,
 } from 'react';
-import { DFS, NEW } from '../utils/constants';
+import { DFS, NEW, RUNNING } from '../utils/constants';
 
 interface SettingsState {
   size: number;
@@ -32,7 +32,6 @@ export const SettingProvider = ({ children }: { children: ReactNode }) => {
   const onChangeHandler = (
     e: ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => {
-    // TODO disable size change when app state !== NEW
     setSettings({ ...settings, [e.target.name]: Number(e.target.value) });
   };
 

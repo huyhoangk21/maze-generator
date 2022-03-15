@@ -1,9 +1,15 @@
-import React from 'react';
-import { DFS, PRIM, KRUSKAL, WILSON, ALDOUS_BRODER } from '../utils/constants';
+import {
+  DFS,
+  PRIM,
+  KRUSKAL,
+  WILSON,
+  ALDOUS_BRODER,
+  RUNNING,
+} from '../utils/constants';
 import { useSettings } from '../hooks/useSettings';
 
 const Settings = () => {
-  const { size, generator, delay, onChangeHandler } = useSettings();
+  const { size, generator, delay, appState, onChangeHandler } = useSettings();
 
   const generatorOptions = [
     { key: DFS, value: 'Randomized DFS' },
@@ -28,6 +34,7 @@ const Settings = () => {
           onChange={onChangeHandler}
           name='size'
           id='size'
+          disabled={appState === RUNNING}
         />
       </div>
       <div className='flex flex-col'>
@@ -55,6 +62,7 @@ const Settings = () => {
           name='generator'
           value={generator}
           onChange={onChangeHandler}
+          disabled={appState === RUNNING}
         >
           {generatorOptions.map(({ key, value }) => (
             <option key={key} value={key}>
