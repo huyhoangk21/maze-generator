@@ -3,6 +3,7 @@ import { useSettings } from '../hooks/useSettings';
 import { CURRENT, OTHER, UNVISITED, VISITED } from '../utils/constants';
 
 export const useDFS = () => {
+  const { sleep } = useSettings();
   const {
     removeWallBetween,
     setCell,
@@ -11,10 +12,8 @@ export const useDFS = () => {
     getAdjacentCells,
     pToKey,
     kToPos,
+    cleanMaze,
   } = useMaze();
-  const { sleep } = useSettings();
-
-  const { cleanMaze } = useMaze();
 
   const dfs = async () => {
     const random = getRandomCell();

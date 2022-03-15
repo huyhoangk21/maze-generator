@@ -10,12 +10,14 @@ import {
 } from '../utils/constants';
 import { useSettings } from '../hooks/useSettings';
 import { useDFS } from '../generators/useDFS';
+import { usePrim } from '../generators/usePrim';
 
 const Settings = () => {
   const { size, generator, delay, appState, setNew, onChangeHandler } =
     useSettings();
 
   const { dfs } = useDFS();
+  const { prim } = usePrim();
 
   const generatorOptions = [
     { key: DFS, value: 'Randomized DFS' },
@@ -33,7 +35,7 @@ const Settings = () => {
         </label>
         <input
           type='range'
-          min={3}
+          min={10}
           max={30}
           step={1}
           value={size}
@@ -56,7 +58,7 @@ const Settings = () => {
           onChange={onChangeHandler}
           name='delay'
           id='delay'
-          // disabled={appState !== NEW}
+          disabled={appState !== NEW}
         />
       </div>
       <div className='flex flex-col'>
@@ -81,7 +83,7 @@ const Settings = () => {
       <div className='text-center mt-2 md:mt-0 flex gap-2'>
         <button
           className='uppercase text-white bg-blue-500 py-0.5 px-3 disabled:bg-slate-300 disabled:cursor-not-allowed'
-          disabled={appState === RUNNING}
+          disabled={appState === RUNNING || appState === NEW}
           onClick={() => setNew(NEW)}
         >
           New
@@ -91,7 +93,7 @@ const Settings = () => {
           disabled={appState !== NEW}
           onClick={async () => {
             setNew(RUNNING);
-            await dfs();
+            await prim();
             setNew(STOP);
           }}
         >

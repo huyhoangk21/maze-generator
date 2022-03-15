@@ -25,7 +25,7 @@ const SettingsContext = createContext<ISettingsContext>(null!);
 
 export const SettingProvider = ({ children }: { children: ReactNode }) => {
   const [settings, setSettings] = useState<SettingsState>({
-    size: 10,
+    size: 15,
     delay: 0,
     generator: DFS,
     appState: NEW,
@@ -38,7 +38,7 @@ export const SettingProvider = ({ children }: { children: ReactNode }) => {
   };
 
   const sleep = () =>
-    new Promise(resolve => setTimeout(resolve, settings.delay * 100));
+    new Promise(resolve => setTimeout(resolve, settings.delay * 50));
 
   const setNew = (value: number) => {
     setSettings({ ...settings, appState: value });
