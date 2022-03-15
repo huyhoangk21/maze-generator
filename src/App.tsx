@@ -1,6 +1,7 @@
 import React from 'react';
+import Maze from './components/Maze';
 import Settings from './components/Settings';
-import { SettingProvider } from './components/useSettings';
+import { SettingProvider } from './hooks/useSettings';
 
 const App = () => {
   return (
@@ -10,6 +11,7 @@ const App = () => {
           Maze Generator
         </div>
         <Settings />
+        <Maze />
       </div>
     </SettingProvider>
   );

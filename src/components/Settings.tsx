@@ -1,6 +1,6 @@
 import React from 'react';
 import { DFS, PRIM, KRUSKAL, WILSON, ALDOUS_BRODER } from '../utils/constants';
-import { useSettings } from './useSettings';
+import { useSettings } from '../hooks/useSettings';
 
 const Settings = () => {
   const { size, generator, delay, onChangeHandler } = useSettings();
