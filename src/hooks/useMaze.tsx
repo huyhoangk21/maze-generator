@@ -41,6 +41,7 @@ export const MazeProvider = ({ children }: { children: ReactNode }) => {
     if (appState === NEW) {
       newMaze();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [size, generator, appState]);
 
   const setCell = (key: number, state: number) => {
