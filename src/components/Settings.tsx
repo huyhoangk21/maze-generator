@@ -1,7 +1,10 @@
 import React from 'react';
 import { DFS, PRIM, KRUSKAL, WILSON, ALDOUS_BRODER } from '../utils/constants';
+import { useSettings } from './useSettings';
 
 const Settings = () => {
+  const { size, generator, delay, onChangeHandler } = useSettings();
+
   const generatorOptions = [
     { key: DFS, value: 'Randomized DFS' },
     { key: KRUSKAL, value: "Randomized Kruskal's" },
@@ -14,41 +17,49 @@ const Settings = () => {
     <div className='flex flex-col gap-2 md:flex-row md:gap-5 md:items-end'>
       <div className='flex flex-col'>
         <label htmlFor='size' className='font-bold'>
-          Size
+          Size: {size}
         </label>
         <input
           type='range'
           min={10}
           max={40}
           step={1}
-          // value={delay}
-          // onChange={onChangeHandler}
+          value={size}
+          onChange={onChangeHandler}
           name='size'
           id='size'
         />
       </div>
       <div className='flex flex-col'>
-        <label htmlFor='speed' className='font-bold'>
-          Speed
+        <label htmlFor='delay' className='font-bold'>
+          Delay: {delay}
         </label>
         <input
           type='range'
-          min={1}
-          max={5}
-          step={1}
-          // value={delay}
-          // onChange={onChangeHandler}
-          name='speed'
-          id='speed'
+          min={0}
+          max={0.5}
+          step={0.1}
+          value={delay}
+          onChange={onChangeHandler}
+          name='delay'
+          id='delay'
         />
       </div>
       <div className='flex flex-col'>
         <label htmlFor='generator' className='font-bold'>
           Generator
         </label>
-        <select id='generator' name='generator' className='border border-black'>
+        <select
+          className='border border-black'
+          id='generator'
+          name='generator'
+          value={generator}
+          onChange={onChangeHandler}
+        >
           {generatorOptions.map(({ key, value }) => (
-            <option value={key}>{value}</option>
+            <option key={key} value={key}>
+              {value}
+            </option>
           ))}
         </select>
       </div>
