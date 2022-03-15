@@ -14,10 +14,9 @@ import { usePrim } from '../generators/usePrim';
 import { useAldousBroder } from '../generators/useAldousBroder';
 import { useWilson } from '../generators/useWilson';
 import { useKruskal } from '../generators/useKruskal';
-import { useEffect } from 'react';
 
 const Settings = () => {
-  const { size, generator, delay, appState, setNew, onChangeHandler } =
+  const { size, generator, delay, appState, setApp, onChangeHandler } =
     useSettings();
 
   const { dfs } = useDFS();
@@ -36,11 +35,6 @@ const Settings = () => {
     { key: ALDOUS_BRODER, value: 'Alduous-Broder' },
   ];
 
-  useEffect(() => {
-    if (appState === RUNNING) {
-    }
-  });
-
   return (
     <div className='flex flex-col gap-2 md:flex-row md:gap-5 md:items-end'>
       <div className='flex flex-col'>
@@ -56,7 +50,7 @@ const Settings = () => {
           onChange={onChangeHandler}
           name='size'
           id='size'
-          disabled={appState !== NEW}
+          disabled={appState === RUNNING}
         />
       </div>
       <div className='flex flex-col'>
@@ -72,7 +66,7 @@ const Settings = () => {
           onChange={onChangeHandler}
           name='delay'
           id='delay'
-          disabled={appState !== NEW}
+          disabled={appState === RUNNING}
         />
       </div>
       <div className='flex flex-col'>
@@ -85,7 +79,7 @@ const Settings = () => {
           name='generator'
           value={generator}
           onChange={onChangeHandler}
-          disabled={appState !== NEW}
+          disabled={appState === RUNNING}
         >
           {generatorOptions.map(({ key, value }) => (
             <option key={key} value={key}>
@@ -98,7 +92,7 @@ const Settings = () => {
         <button
           className='uppercase text-white bg-blue-500 py-0.5 px-4 disabled:bg-slate-300 disabled:cursor-not-allowed'
           disabled={appState === RUNNING || appState === NEW}
-          onClick={() => setNew(NEW)}
+          onClick={() => setApp(NEW)}
         >
           New
         </button>
@@ -106,11 +100,9 @@ const Settings = () => {
           className='uppercase text-white bg-blue-500 py-0.5 px-4 disabled:bg-slate-300 disabled:cursor-not-allowed'
           disabled={appState !== NEW}
           onClick={async () => {
-            setNew(RUNNING);
-            // if (appState === RUNNING) {
+            setApp(RUNNING);
             await generators[generator]();
-            // }
-            setNew(STOP);
+            setApp(STOP);
           }}
         >
           Run

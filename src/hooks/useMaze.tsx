@@ -35,14 +35,14 @@ const MazeContext = createContext<IMazeContext>(null!);
 
 export const MazeProvider = ({ children }: { children: ReactNode }) => {
   const [cells, setCells] = useState<ICell[]>([]);
-  const { size, generator, appState } = useSettings();
+  const { size, generator, delay, appState } = useSettings();
 
   useEffect(() => {
     if (appState === NEW) {
       newMaze();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [size, generator, appState]);
+  }, [size, generator, delay, appState]);
 
   const setCell = (key: number, state: number) => {
     const temp = [...cells];

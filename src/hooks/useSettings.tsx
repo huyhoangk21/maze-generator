@@ -18,7 +18,7 @@ interface ISettingsContext extends SettingsState {
   onChangeHandler: (
     e: ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => void;
-  setNew: (value: number) => void;
+  setApp: (value: number) => void;
   sleep: () => Promise<unknown>;
 }
 const SettingsContext = createContext<ISettingsContext>(null!);
@@ -34,20 +34,24 @@ export const SettingProvider = ({ children }: { children: ReactNode }) => {
   const onChangeHandler = (
     e: ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => {
-    setSettings({ ...settings, [e.target.name]: Number(e.target.value) });
+    setSettings({
+      ...settings,
+      [e.target.name]: Number(e.target.value),
+      appState: NEW,
+    });
   };
 
   const sleep = () =>
     new Promise(resolve => setTimeout(resolve, settings.delay * 200));
 
-  const setNew = (value: number) => {
+  const setApp = (value: number) => {
     setSettings({ ...settings, appState: value });
   };
 
   const value = {
     ...settings,
     sleep,
-    setNew,
+    setApp,
     onChangeHandler,
   };
 

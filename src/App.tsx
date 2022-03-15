@@ -1,4 +1,3 @@
-import React from 'react';
 import Legend from './components/Legend';
 import Loading from './components/Loading';
 import Maze from './components/Maze';
