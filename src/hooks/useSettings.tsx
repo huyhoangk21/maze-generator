@@ -38,7 +38,7 @@ export const SettingProvider = ({ children }: { children: ReactNode }) => {
   };
 
   const sleep = () =>
-    new Promise(resolve => setTimeout(resolve, settings.delay * 50));
+    new Promise(resolve => setTimeout(resolve, settings.delay * 200));
 
   const setNew = (value: number) => {
     setSettings({ ...settings, appState: value });
