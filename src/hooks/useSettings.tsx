@@ -2,10 +2,12 @@ import {
   ChangeEvent,
   createContext,
   ReactNode,
+  useCallback,
   useContext,
+  useEffect,
   useState,
 } from 'react';
-import { DFS, NEW, RUNNING } from '../utils/constants';
+import { DFS, NEW } from '../utils/constants';
 
 interface SettingsState {
   size: number;
@@ -18,6 +20,8 @@ interface ISettingsContext extends SettingsState {
   onChangeHandler: (
     e: ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => void;
+  setNew: (value: number) => void;
+  sleep: () => Promise<unknown>;
 }
 const SettingsContext = createContext<ISettingsContext>(null!);
 
@@ -35,8 +39,17 @@ export const SettingProvider = ({ children }: { children: ReactNode }) => {
     setSettings({ ...settings, [e.target.name]: Number(e.target.value) });
   };
 
+  const sleep = () =>
+    new Promise(resolve => setTimeout(resolve, settings.delay * 100));
+
+  const setNew = (value: number) => {
+    setSettings({ ...settings, appState: value });
+  };
+
   const value = {
     ...settings,
+    sleep,
+    setNew,
     onChangeHandler,
   };
 

@@ -4,7 +4,7 @@ import { useSettings } from '../hooks/useSettings';
 const Legend = () => {
   const { generator } = useSettings();
 
-  const legendOptions = ['backtrack', 'outer', '', 'random walk', ''];
+  const legendOptions = ['backtrack', '', 'outer', 'walk', ''];
 
   return (
     <div className='flex gap-0.5 mt-5 mb-2 sm:gap-5'>

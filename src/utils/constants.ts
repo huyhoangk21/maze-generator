@@ -6,6 +6,7 @@ export const ALDOUS_BRODER = 4;
 
 export const NEW = 0;
 export const RUNNING = 1;
+export const STOP = 2;
 
 export const UNVISITED = 0;
 export const VISITED = 1;

@@ -5,11 +5,17 @@ import {
   WILSON,
   ALDOUS_BRODER,
   RUNNING,
+  STOP,
+  NEW,
 } from '../utils/constants';
 import { useSettings } from '../hooks/useSettings';
+import { useDFS } from '../generators/useDFS';
 
 const Settings = () => {
-  const { size, generator, delay, appState, onChangeHandler } = useSettings();
+  const { size, generator, delay, appState, setNew, onChangeHandler } =
+    useSettings();
+
+  const { dfs } = useDFS();
 
   const generatorOptions = [
     { key: DFS, value: 'Randomized DFS' },
@@ -27,14 +33,14 @@ const Settings = () => {
         </label>
         <input
           type='range'
-          min={10}
-          max={40}
+          min={3}
+          max={30}
           step={1}
           value={size}
           onChange={onChangeHandler}
           name='size'
           id='size'
-          disabled={appState === RUNNING}
+          disabled={appState !== NEW}
         />
       </div>
       <div className='flex flex-col'>
@@ -50,6 +56,7 @@ const Settings = () => {
           onChange={onChangeHandler}
           name='delay'
           id='delay'
+          // disabled={appState !== NEW}
         />
       </div>
       <div className='flex flex-col'>
@@ -62,7 +69,7 @@ const Settings = () => {
           name='generator'
           value={generator}
           onChange={onChangeHandler}
-          disabled={appState === RUNNING}
+          disabled={appState !== NEW}
         >
           {generatorOptions.map(({ key, value }) => (
             <option key={key} value={key}>
@@ -71,8 +78,23 @@ const Settings = () => {
           ))}
         </select>
       </div>
-      <div className='text-center mt-2 md:mt-0'>
-        <button className='uppercase text-white bg-blue-500 py-0.5 px-3'>
+      <div className='text-center mt-2 md:mt-0 flex gap-2'>
+        <button
+          className='uppercase text-white bg-blue-500 py-0.5 px-3 disabled:bg-slate-300 disabled:cursor-not-allowed'
+          disabled={appState === RUNNING}
+          onClick={() => setNew(NEW)}
+        >
+          New
+        </button>
+        <button
+          className='uppercase text-white bg-blue-500 py-0.5 px-3 disabled:bg-slate-300 disabled:cursor-not-allowed'
+          disabled={appState !== NEW}
+          onClick={async () => {
+            setNew(RUNNING);
+            await dfs();
+            setNew(STOP);
+          }}
+        >
           Generate
         </button>
       </div>
