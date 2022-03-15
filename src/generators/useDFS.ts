@@ -12,7 +12,7 @@ export const useDFS = () => {
     getAdjacentCells,
     pToKey,
     kToPos,
-    cleanMaze,
+    replaceState,
   } = useMaze();
 
   const dfs = async () => {
@@ -32,7 +32,7 @@ export const useDFS = () => {
         setCell(current, OTHER);
       }
     }
-    cleanMaze();
+    replaceState(OTHER, VISITED);
   };
 
   const getAdjacentRandomUnvisited = (pos: Position) => {

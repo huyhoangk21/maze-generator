@@ -1,11 +1,16 @@
+import { useSettings } from '../hooks/useSettings';
+import { NEW } from '../utils/constants';
+
 export interface CellProps {
   state: number;
   walls: boolean[];
 }
 
 export const Cell = ({ state, walls }: CellProps) => {
+  const { appState } = useSettings();
+
   const stateClasses = [
-    'bg-gray-600',
+    'bg-gray-900',
     'bg-white',
     'bg-blue-500',
     'bg-orange-400',
@@ -21,7 +26,9 @@ export const Cell = ({ state, walls }: CellProps) => {
 
   return (
     <div
-      className={`border-gray-900 ${mapStateToClass} ${mapWallsToClass}`}
+      className={`${mapStateToClass} ${mapWallsToClass} ${
+        appState === NEW ? 'border-gray-700' : 'border-gray-900'
+      }`}
     ></div>
   );
 };

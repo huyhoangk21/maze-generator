@@ -13,7 +13,7 @@ export const useAldousBroder = () => {
     getAdjacentCells,
     pToKey,
     kToPos,
-    cleanMaze,
+    replaceState,
   } = useMaze();
 
   const aldousBroder = async () => {
@@ -30,7 +30,7 @@ export const useAldousBroder = () => {
       setCell(adjacent, CURRENT);
       await sleep();
     }
-    cleanMaze();
+    replaceState(CURRENT, VISITED);
   };
 
   const getRandomAdjacent = (pos: Position) => {

@@ -1,16 +1,19 @@
 import { useMaze } from '../hooks/useMaze';
 import { useSettings } from '../hooks/useSettings';
 import { useWidth } from '../hooks/useWidth';
+import { NEW } from '../utils/constants';
 import { Cell } from './Cell';
 
 const Maze = () => {
   const { width } = useWidth();
-  const { size } = useSettings();
+  const { size, appState } = useSettings();
   const { cells } = useMaze();
 
   return (
     <div
-      className='border border-black grid'
+      className={`border  grid ${
+        appState === NEW ? 'border-gray-700' : 'border-gray-900'
+      }`}
       style={{
         width,
         height: width,

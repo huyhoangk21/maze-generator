@@ -34,8 +34,8 @@ interface IMazeContext {
   kToPos: (key: number) => Position;
   getRandomCell: () => number;
   getAdjacentCells: (pos: Position) => Position[];
+  replaceState: (state1: number, state2: number) => void;
   newMaze: () => void;
-  cleanMaze: () => void;
 }
 
 const MazeContext = createContext<IMazeContext>(null!);
@@ -86,9 +86,11 @@ export const MazeProvider = ({ children }: { children: ReactNode }) => {
     setCells([...temp]);
   };
 
-  const cleanMaze = () => {
+  const replaceState = (state1: number, state2: number) => {
     const temp = [...cells];
-    temp.forEach((_, index) => (cells[index].state = VISITED));
+    temp
+      .filter(cell => cell.state === state1)
+      .forEach(cell => (cells[cell.key].state = state2));
     setCells([...temp]);
   };
 
@@ -126,8 +128,8 @@ export const MazeProvider = ({ children }: { children: ReactNode }) => {
     kToPos,
     getRandomCell,
     getAdjacentCells,
+    replaceState,
     newMaze,
-    cleanMaze,
   };
 
   return <MazeContext.Provider value={value}>{children}</MazeContext.Provider>;
