@@ -2,9 +2,7 @@ import {
   ChangeEvent,
   createContext,
   ReactNode,
-  useCallback,
   useContext,
-  useEffect,
   useState,
 } from 'react';
 import { DFS, NEW } from '../utils/constants';
