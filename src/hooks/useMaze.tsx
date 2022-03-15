@@ -5,15 +5,7 @@ import {
   useEffect,
   useState,
 } from 'react';
-import {
-  BOTTOM,
-  LEFT,
-  NEW,
-  RIGHT,
-  TOP,
-  UNVISITED,
-  VISITED,
-} from '../utils/constants';
+import { BOTTOM, LEFT, NEW, RIGHT, TOP, UNVISITED } from '../utils/constants';
 import { useSettings } from './useSettings';
 
 export type Position = readonly [number, number];
@@ -32,6 +24,7 @@ interface IMazeContext {
   removeWallBetween: (key1: number, key2: number) => void;
   pToKey: ([x, y]: Position) => number;
   kToPos: (key: number) => Position;
+  isWithinMaze: (pos: Position) => boolean;
   getRandomCell: () => number;
   getAdjacentCells: (pos: Position) => Position[];
   replaceState: (state1: number, state2: number) => void;
@@ -126,6 +119,7 @@ export const MazeProvider = ({ children }: { children: ReactNode }) => {
     removeWallBetween,
     pToKey,
     kToPos,
+    isWithinMaze,
     getRandomCell,
     getAdjacentCells,
     replaceState,

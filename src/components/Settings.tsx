@@ -13,6 +13,7 @@ import { useDFS } from '../generators/useDFS';
 import { usePrim } from '../generators/usePrim';
 import { useAldousBroder } from '../generators/useAldousBroder';
 import { useWilson } from '../generators/useWilson';
+import { useKruskal } from '../generators/useKruskal';
 
 const Settings = () => {
   const { size, generator, delay, appState, setNew, onChangeHandler } =
@@ -22,6 +23,9 @@ const Settings = () => {
   const { prim } = usePrim();
   const { aldousBroder } = useAldousBroder();
   const { wilson } = useWilson();
+  const { kruskal } = useKruskal();
+
+  const generators = [dfs, kruskal, prim, wilson, aldousBroder];
 
   const generatorOptions = [
     { key: DFS, value: 'Randomized DFS' },
@@ -84,24 +88,24 @@ const Settings = () => {
           ))}
         </select>
       </div>
-      <div className='text-center mt-2 md:mt-0 flex gap-2'>
+      <div className='text-center mt-2 md:mt-0 flex gap-5'>
         <button
-          className='uppercase text-white bg-blue-500 py-0.5 px-3 disabled:bg-slate-300 disabled:cursor-not-allowed'
+          className='uppercase text-white bg-blue-500 py-0.5 px-4 disabled:bg-slate-300 disabled:cursor-not-allowed'
           disabled={appState === RUNNING || appState === NEW}
           onClick={() => setNew(NEW)}
         >
           New
         </button>
         <button
-          className='uppercase text-white bg-blue-500 py-0.5 px-3 disabled:bg-slate-300 disabled:cursor-not-allowed'
+          className='uppercase text-white bg-blue-500 py-0.5 px-4 disabled:bg-slate-300 disabled:cursor-not-allowed'
           disabled={appState !== NEW}
           onClick={async () => {
             setNew(RUNNING);
-            await wilson();
+            await generators[generator]();
             setNew(STOP);
           }}
         >
-          Generate
+          Run
         </button>
       </div>
     </div>
