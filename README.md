@@ -1,3 +1,5 @@
+<div id="top"></div>
+
 <!-- PROJECT LOGO -->
 <div align="center">
   <img src="/src/assets/maze.svg" alt="Logo"/>
@@ -31,38 +33,78 @@
   <li><a href="#algorithms">Algorithms</a></li>
       <ul>
         <li><a href="#randomized-depth-first-search">Randomized Depth-First Search</a></li>
-        <li><a href="#randomized-kruskal's">Randomized Kruskal's</a></li>
-        <li><a href="#randomized-prim's">Randomized Prim's</a></li>
-        <li><a href="#wilson's">Wilson's</a></li>
+        <li><a href="#randomized-kruskals">Randomized Kruskal's</a></li>
+        <li><a href="#randomized-prims">Randomized Prim's</a></li>
+        <li><a href="#wilsons">Wilson's</a></li>
         <li><a href="#aldous-broder">Aldous Broder</a></li>
       </ul>
+  <li><a href="#author">Author</a></li>
 </ol>
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
+This is a simple
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
 ### Built With
+
+* [React.js](https://reactjs.org/)
+* [TypeScript](https://www.typescriptlang.org/)
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+
 
 <!-- GETTING STARTED -->
 ## Getting Started
 
+<p align="right">(<a href="#top">back to top</a>)</p>
+
 ### Prerequisites
 
+<p align="right">(<a href="#top">back to top</a>)</p>
+
 ### Installation
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+
+
+
+
 
 <!-- ALGORITHMS -->
 ## Algorithms
 
 ### Randomized Depth-First Search
 
+<p align="right">(<a href="#top">back to top</a>)</p>
+
 ### Randomized Kruskal's
+
+<p align="right">(<a href="#top">back to top</a>)</p>
 
 ### Randomized Prim's
 
+<p align="right">(<a href="#top">back to top</a>)</p>
+
 ### Wilson's
+
+<p align="right">(<a href="#top">back to top</a>)</p>
 
 ### Aldous Broder
 
+<p align="right">(<a href="#top">back to top</a>)</p>
 
+<!-- AUTHOR -->
+## Author
 
+[Github](https://github.com/huyhoangk21 "Github")
+
+[Website](https://hoangple.me "Website")
+
+<p align="right">(<a href="#top">back to top</a>)</p>
 <!-- MARKDOWN LINKS & IMAGES -->
+
