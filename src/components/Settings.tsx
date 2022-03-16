@@ -36,7 +36,7 @@ const Settings = () => {
   ];
 
   return (
-    <div className='flex flex-col gap-2 md:flex-row md:gap-5 md:items-end'>
+    <div className='flex flex-col gap-2 md:flex-row md:gap-5 md:items-end mb-2'>
       <div className='flex flex-col'>
         <label htmlFor='size' className='font-bold'>
           Size: {size}
