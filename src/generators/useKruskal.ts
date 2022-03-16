@@ -19,13 +19,14 @@ export const useKruskal = () => {
     while (set.numComponents > 1) {
       const { first, second } = walls.pop()!;
       setCell(first, CURRENT);
-      setCell(second, CURRENT);
       await sleep();
+      setCell(first, VISITED);
       if (!set.connected(first, second)) {
         removeWallBetween(first, second);
         set.union(first, second);
       }
-      setCell(first, VISITED);
+      setCell(second, CURRENT);
+      await sleep();
       setCell(second, VISITED);
     }
   };
