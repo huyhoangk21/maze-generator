@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { useSettings } from '../hooks/useSettings';
 import { NEW } from '../utils/constants';
 
@@ -6,7 +7,7 @@ export interface CellProps {
   walls: boolean[];
 }
 
-export const Cell = ({ state, walls }: CellProps) => {
+const Cell = ({ state, walls }: CellProps) => {
   const { appState } = useSettings();
 
   const stateClasses = [
@@ -32,3 +33,5 @@ export const Cell = ({ state, walls }: CellProps) => {
     ></div>
   );
 };
+
+export default memo(Cell);

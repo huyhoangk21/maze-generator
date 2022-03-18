@@ -12,8 +12,8 @@ const App = () => {
       <MazeProvider>
         <Loading />
         <div className='flex flex-col items-center gap-1 pt-2 pb-5'>
-          <img src={MazeLogo} alt='Maze' />
-          <div className='text-blue-500 font-bold text-2xl text-center mb-4'>
+          {/* <img src={MazeLogo} alt='Maze' /> */}
+          <div className='text-blue-500 font-bold text-2xl text-center my-5'>
             Maze Generator
           </div>
           <Settings />
