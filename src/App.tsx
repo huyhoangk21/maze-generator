@@ -4,7 +4,7 @@ import Maze from './components/Maze';
 import Settings from './components/Settings';
 import { MazeProvider } from './hooks/useMaze';
 import { SettingProvider } from './hooks/useSettings';
-import MazeLogo from './assets/maze.svg';
+// import MazeLogo from './assets/maze.svg';
 
 const App = () => {
   return (
@@ -12,8 +12,8 @@ const App = () => {
       <MazeProvider>
         <Loading />
         <div className='flex flex-col items-center gap-1 pt-2 pb-5'>
-          <img src={MazeLogo} alt='Maze' />
-          <div className='text-blue-500 font-bold text-2xl text-center mb-4'>
+          {/* <img src={MazeLogo} alt='Maze' /> */}
+          <div className='text-blue-500 font-bold text-2xl text-center my-5'>
             Maze Generator
           </div>
           <Settings />
