@@ -2,7 +2,7 @@ import { useMaze } from '../hooks/useMaze';
 import { useSettings } from '../hooks/useSettings';
 import { useWidth } from '../hooks/useWidth';
 import { NEW } from '../utils/constants';
-import { Cell } from './Cell';
+import Cell from './Cell';
 
 const Maze = () => {
   const { width } = useWidth();
