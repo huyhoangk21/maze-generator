@@ -2,7 +2,7 @@
 
 <!-- PROJECT LOGO -->
 <div align="center">
-  <img src="/src/assets/maze.svg" alt="Logo"/>
+<!--   <img src="/src/assets/maze.svg" alt="Logo"/> -->
 
   <h3 align="center">Maze Generation Visualizer</h3>
 
